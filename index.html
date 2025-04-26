@@ -1,15 +1,286 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app">
-      bonjour
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaétan KEMENI - Mon Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function (OneSignal) {
+      await OneSignal.init({
+        appId: "53bcbd9c-8bc3-4a92-9e50-2512478ba3b4",
+      });
+    });
+  </script>
+  <style>
+    
+    .canvas-section {
+      position: relative;
+      height: 100vh;
+      background: black;
+    }
+
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.5s;
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    @keyframes blob {
+
+      0%,
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -20px) scale(1.05);
+      }
+
+      66% {
+        transform: translate(-20px, 30px) scale(0.95);
+      }
+    }
+
+    .animate-blob {
+      animation: blob 8s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <div class="h-10 w-10 rounded-full overflow-hidden">
+            <img src="logo.png" alt="Logo" class="h-full w-full object-cover">
+          </div>
+
+          <span class="font-bold text-xl text-indigo-600">Gaétan KEMENI</span>
+        </div>
+
+        <nav class="hidden md:flex space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium">Accueil</a>
+          <a href="apropos.html" class="text-gray-700 hover:text-indigo-600 font-medium">À propos</a>
+          <a href="activites.html" class="text-gray-700 hover:text-indigo-600 font-medium">Activités</a>
+          <a href="infos.html" class="text-gray-700 hover:text-indigo-600 font-medium">Infos</a>
+          <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <a href="index.html" class="block py-2 text-gray-700 hover:text-indigo-600">Accueil</a>
+      <a href="apropos.html" class="block py-2 text-gray-700 hover:text-indigo-600">À propos</a>
+      <a href="activites.html" class="block py-2 text-gray-700 hover:text-indigo-600">Activités</a>
+      <a href="infos.html" class="text-gray-700 hover:text-indigo-600 font-medium">Infos</a>
+      <a href="contact.html" class="block py-2 text-gray-700 hover:text-indigo-600">Contact</a>
+    </div>
+  </header>
+  <section id="apropos" class="relative py-24 bg-white overflow-hidden">
+    <!-- Animation de fond discrète -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Texte -->
+        <div>
+          <h2 class="text-4xl font-extrabold text-gray-900 leading-tight">À propos de moi</h2>
+          <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+            Je suis <span class="font-semibold text-indigo-600">Gaétan KEMENI</span>, passionné de technologie, curieux
+            du monde, et toujours prêt à relever de nouveaux défis. <br>
+            Développeur en génie logiciel, créatif, ambitieux, avec une soif constante d’apprendre et de créer des
+            expériences utiles et inspirantes.
+          </p>
+          <p class="mt-4 text-gray-600">
+            Ce blog est un espace personnel et professionnel, un reflet de mes compétences, passions, réflexions, et
+            projets.
+          </p>
+          <div class="mt-6">
+            <a href="#contact"
+              class="inline-block bg-indigo-600 text-white font-medium px-6 py-3 rounded-full shadow hover:bg-indigo-700 transition">
+              Me découvrir davantage
+            </a>
+          </div>
+        </div>
+
+        <!-- Image ou avatar -->
+        <div class="flex justify-center">
+          <img src="logo.png" alt="Portrait" class="w-80 h-80 object-cover rounded-full shadow-lg hover:scale-105 transition duration-300">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section class="text-center mb-12">
+      <h1 class="text-4xl sm:text-5xl font-bold text-indigo-700 mb-4">
+        Bienvenue sur le blog de Gaétan KEMENI
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Passionné de développement, de création, et de transmission. Ici, je partage mes projets, mes passions, mes
+        expériences et un peu de moi-même.
+      </p>
+    </section>
+      <!-- Animation Frames (avec images) -->
+  <section class="canvas-section">
+    <div class="frame" id="frame1"></div>
+    <div class="frame" id="frame2"></div>
+    <div class="frame" id="frame3"></div>
+    <!-- Ajoute d'autres images si nécessaire -->
+  </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-2">👨‍💻 Compétences</h2>
+        <p class="text-gray-700">
+          Développement logiciel, Web, mobile, gestion de projet, UI/UX... avec un amour particulier pour l'efficacité,
+          la qualité et l'impact.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-2">🎯 Objectif</h2>
+        <p class="text-gray-700">
+          Me présenter de manière authentique et professionnelle, ouvrir la porte à des collaborations enrichissantes,
+          et partager ce que j’aime.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-2">🎨 Passions</h2>
+        <p class="text-gray-700">
+          Design, innovation, écriture, exploration d’idées. J’aime créer des choses qui font sens et qui racontent une
+          histoire.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold text-indigo-600 mb-2">❤️ Humainement</h2>
+        <p class="text-gray-700">
+          Curieux, loyal, ouvert et passionné. J’accorde une grande importance aux relations humaines, à la sincérité et
+          à l’écoute.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+
+<script type="module">
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Cibler toutes les frames avec des images
+  const frames = document.querySelectorAll('.frame');
+  const totalFrames = 5001; // Nombre total d'images, de 0000 à 5000
+
+  // Fonction pour charger dynamiquement les images
+  function loadImage(frameIndex) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = `/frames/frame_${String(frameIndex).padStart(4, '0')}.jpg`; // Chemin d'image dynamique
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+    });
+  }
+
+  let currentFrameIndex = 0; // Index de l'image actuelle
+  let images = []; // Tableau des images chargées
+
+  // Fonction pour mettre à jour le fond des frames
+  function updateFrames(frameIndex) {
+    loadImage(frameIndex).then(img => {
+      frames.forEach(frame => {
+        frame.style.backgroundImage = `url(${img.src})`;
+      });
+    }).catch(err => {
+      console.error("Erreur lors du chargement de l'image", err);
+    });
+  }
+
+  // Fonction d'animation avec ScrollTrigger
+  gsap.to({ frame: 0 }, {
+    frame: totalFrames - 1,
+    snap: "frame",
+    ease: "none",
+    scrollTrigger: {
+      scrub: true,
+      trigger: '.canvas-section',
+      start: 'top top',
+      end: 'bottom top',
+      pin: true,
+      onEnter: () => {
+        // Charger l'image initiale
+        updateFrames(currentFrameIndex);
+      },
+      onUpdate: (self) => {
+        // Calculer l'index de l'image en fonction du pourcentage du scroll
+        const frameIndex = Math.floor(self.progress * (totalFrames - 1));
+        if (frameIndex !== currentFrameIndex) {
+          currentFrameIndex = frameIndex;
+          updateFrames(currentFrameIndex);
+        }
+      },
+      onLeaveBack: () => {
+        // Optionnellement, on peut remettre l'index de l'image à 0
+        currentFrameIndex = 0;
+        updateFrames(currentFrameIndex);
+      }
+    }
+  });
+</script>
+
+</body>
+
 </html>
